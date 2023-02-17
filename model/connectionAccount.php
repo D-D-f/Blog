@@ -13,4 +13,10 @@
                 }
             }
         }
+
+        public static function createSession($pseudo, $email) {
+            $_SESSION['connect'] = 1;
+            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['email'] = $email;
+        }
     }

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('./model/connectionAccount.php');
 
     if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['pseudo'])) {
@@ -7,13 +8,19 @@
         $password = htmlspecialchars($_POST['password']);
 
         if(ConnectionAccount::checkAccount($pseudo, $email, $password)) {
-            header('location: index.php');
+            ConnectionAccount::createSession($pseudo, $email);
+            header('location: ./index.php');
             exit();
         } else {
             header('location: index.php?error=falseid');
             exit();
         }
     }
+?>
+
+<?php
+    $title = "connexion";
+    ob_start(); 
 ?>
 
 <div class="containerForm d-flex flex-column justify-content-center align-items-center">
@@ -41,3 +48,7 @@
     </form>
 </div>
 
+<?php
+    $content = ob_get_clean();
+    require('view/template.php');
+?>

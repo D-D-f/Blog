@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('./model/inscription.php');
     require_once('./model/verification.php');
     require_once('./model/security.php');
@@ -37,7 +38,12 @@
     }    
 ?>
 
-<div class="containerForm d-flex flex-column justify-content-center align-items-center">
+<?php
+    $title = "Formulaire d'inscription";
+    ob_start();
+?>
+
+    <div class="containerForm d-flex flex-column justify-content-center align-items-center">
     <h2>Formulaire d'inscription</h2>
     <form method="POST" class="d-flex flex-column justify-content-center align-items-center">
         <p class="d-flex align-items-center">
@@ -72,4 +78,10 @@
         </div>
     </form>
 </div>
+
+<?php
+    $content = ob_get_clean();
+    require('view/template.php');
+?>
+
 
