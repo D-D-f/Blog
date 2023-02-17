@@ -1,0 +1,14 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Réalisation d'un blog pour le projet passerelle de Believemy",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch design/sass/style.scss:design/css/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.0-alpha1"
+  }
+}
