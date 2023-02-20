@@ -12,3 +12,7 @@
     function home() {
         require('view/template.php');
     }
+
+    function article() {
+        require("./view/displayArticle.php");
+    }

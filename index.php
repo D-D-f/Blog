@@ -7,7 +7,11 @@
             inscription();
         } else if($_GET['page'] == "connexion") {
             connection();
+        } else if($_GET['page'] == "article" && isset($_GET['id'])) {
+            article();
         }
     } else {
         home();
     }
+
+    

@@ -56,11 +56,11 @@
         </nav>
     </header>
         <?= $content ?>
-
-        <?php 
-            require('./view/displayArticle.php');         
-        ?>
-
+        <section class="d-flex justify-content-around">
+            <?php 
+                require('./view/displayCardArticle.php');
+            ?>
+        </section>
     <footer>
         <span>© Blog David de Freitas 2023</span>
     </footer>
