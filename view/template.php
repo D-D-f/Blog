@@ -1,8 +1,6 @@
 <?php
     session_start();
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,7 +17,6 @@
         <a href="index.php" class="logo">
             <i class="fa-solid fa-dragon"></i>
         </a>
-
         <nav class="d-flex justify-content-between align-items-center">
             <ul class="nav justify-content-end">
                 <li class="nav-item">
@@ -54,15 +51,15 @@
                         header('location: index.php');
                         exit();
                     }
-                ?>
-
-
-                
+                ?>                
             </div>
         </nav>
     </header>
+        <?= $content ?>
 
-    <?= $content ?>
+        <?php 
+            require('./view/displayArticle.php');         
+        ?>
 
     <footer>
         <span>© Blog David de Freitas 2023</span>
