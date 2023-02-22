@@ -10,7 +10,7 @@
     }
 
     function home() {
-        require('view/template.php');
+        require('view/home.php');
     }
 
     function article() {

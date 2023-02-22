@@ -1,0 +1,50 @@
+.img {
+  height: 300px;
+  width: 100%;
+  background-image: url("../../assets/img/bg-articles.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.commentary {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.date_commentary {
+  font-size: 12px;
+}
+
+.pseudo_commentary {
+  font-size: 20px;
+}
+
+.cadre_user {
+  padding: 5px;
+  border-right: 1px solid black;
+}
+
+.content_comentary {
+  padding: 5px;
+}
+
+.user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.form_text,
+.text_com {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.text_com {
+  padding: 10px;
+}
+
+.com {
+  cursor: pointer;
+}

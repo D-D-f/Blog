@@ -4,7 +4,7 @@
   "description": "Réalisation d'un blog pour le projet passerelle de Believemy",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch design/sass/style.scss:design/css/style.css"
+    "sass": "sass --watch public/design/sass/style.scss:public/design/css/style.css"
   },
   "author": "",
   "license": "ISC",

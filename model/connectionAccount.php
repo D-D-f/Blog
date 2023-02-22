@@ -16,7 +16,7 @@
 
         public static function createSession($pseudo, $email) {
             $_SESSION['connect'] = 1;
-            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['pseudo'] = strtolower($pseudo);
             $_SESSION['email'] = $email;
         }
     }

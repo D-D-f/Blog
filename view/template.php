@@ -13,56 +13,69 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <header>
-        <a href="index.php" class="logo">
-            <i class="fa-solid fa-dragon"></i>
-        </a>
-        <nav class="d-flex justify-content-between align-items-center">
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark">Contact</a>
-                </li>
-            </ul>
-
-            <div class="signIn">
-                <?php
-                    if($_SESSION['connect'] == 1) {
-                ?>
-                        <form action="./index.php" method="POST">
-                            <span><i class="fa-solid fa-user"></i> <?= $_SESSION['pseudo'];?></span>
-                            <input type="submit" name="signoff" id="signoff" value="Déconnexion">
-                        </form>
-                <?php
-                    } else {
-                ?>
-                        <a href="./?page=connexion"> Connexion</a>
-                        <a href="./?page=inscription">Inscription</a>
-                <?php
-                    }
-
-                    if($_POST['signoff']) {
-                        session_destroy();
-                        header('location: index.php');
-                        exit();
-                    }
-                ?>                
+        <nav class="navbar bg-body-tertiary d-flex justify-content-center align-items-center">
+        <div class="container-fluid bg-primary">
+            <h1>
+                <a class="navbar-brand text-light" href="index.php">ActuWeb</a>
+            </h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ActuWeb</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-        </nav>
-    </header>
-        <?= $content ?>
-        <section class="d-flex justify-content-around">
-            <?php 
-                require('./view/displayCardArticle.php');
-            ?>
-        </section>
-    <footer>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+                </li>
+                <?php 
+                    if(isset($_SESSION['pseudo'])) {
+                ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['pseudo']; ?>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php
+                                    if($_SESSION['connect'] == 1) {
+                                ?>
+                                <form class="form_deco" action="./index.php" method="POST">
+                                    <input type="submit" name="signoff" id="signoff" value="Déconnexion">
+                                </form>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php
+                        } else {
+                    ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./?page=connexion">Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./?page=inscription">Inscription</a>
+                            </li>
+                    <?php
+                        }
+                            if($_POST['signoff']) {
+                            session_destroy();
+                            header('location: index.php');
+                            exit();
+                        }
+                    ?> 
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+        <div class="container container_home d-flex flex-column justify-content-around">
+            <?= $content ?>
+        </div>
+    <footer class="bg-primary">
         <span>© Blog David de Freitas 2023</span>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

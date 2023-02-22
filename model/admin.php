@@ -7,9 +7,9 @@
 
             while($result = $requete->fetch()) {
                 if($result) {
-                        return true;
+                    return true;
                 } else {
-                        return false;
+                    return false;
                 }
             }
         }
