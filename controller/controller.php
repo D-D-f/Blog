@@ -14,5 +14,9 @@
     }
 
     function article() {
-        require("./view/displayArticle.php");
+        require("view/displayArticle.php");
+    }
+
+    function createArticle() {
+        require('view/createArticle.php');
     }

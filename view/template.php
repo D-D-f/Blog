@@ -16,7 +16,7 @@
         <nav class="navbar bg-body-tertiary d-flex justify-content-center align-items-center">
         <div class="container-fluid bg-primary">
             <h1>
-                <a class="navbar-brand text-light" href="index.php">ActuWeb</a>
+                <a class="navbar-brand text-dark" href="index.php">ActuWeb</a>
             </h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -41,10 +41,16 @@
                             <ul class="dropdown-menu">
                                 <?php
                                     if($_SESSION['connect'] == 1) {
-                                ?>
-                                <form class="form_deco" action="./index.php" method="POST">
-                                    <input type="submit" name="signoff" id="signoff" value="Déconnexion">
-                                </form>
+                                        if(Admin::admin($_SESSION['pseudo'])) { ?>
+                                                <li class="nav-item">
+                                                    <a href="./?page=createarticle">Créer un article</a>
+                                                </li>
+                                        <?php 
+                                        
+                                    }?>
+                                    <form class="form_deco" action="./index.php" method="POST">
+                                        <input type="submit" name="signoff" id="signoff" value="Déconnexion">
+                                    </form>
                                 <?php } ?>
                             </ul>
                         </li>
@@ -73,7 +79,7 @@
         <div class="container container_home d-flex flex-column justify-content-around">
             <?= $content ?>
         </div>
-    <footer class="bg-primary">
+    <footer class="bg-primary text-dark p-4">
         <span>© Blog David de Freitas 2023</span>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

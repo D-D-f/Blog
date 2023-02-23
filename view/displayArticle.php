@@ -10,8 +10,7 @@
     }
 
     if(!empty($_POST['comment_id'])) {
-        $requete = $bdd->prepare('DELETE FROM Comment WHERE id = ?');
-        $requete->execute([$_POST['comment_id']]);
+        Articles::deleteComment($_POST['comment_id']);
     }
 ?>
     <div class="img">
@@ -47,10 +46,18 @@
                 </div>
                 <?php if(!empty($_SESSION['connect']) && $_SESSION['pseudo'] == $result['pseudo']) { ?>
                 <div class="com d-flex justify-content-evenly">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <form method="POST">
+                        <input type="hidden" name="edit_com" value="<?= $result['id']; ?>"/>
+                        <button type="submit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </form>
+                    
                     <form method="POST">
                         <input type="hidden" name="comment_id" value="<?= $result['id']; ?>"/>
-                        <input type="submit" name="delete_com" value="delete"/>
+                        <button type="submit">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
                     </form>
                 <?php
                 ?>
@@ -59,9 +66,30 @@
                 }
                 ?>
                 <span class="date_commentary"><?= Articles::transformDate($result['date']); ?></span>
-                
             </div>
-            <p class="content_comentary"><?= $result['comment']; ?></p>
+
+            <?php
+                if(!empty($_POST["edit_com"]) && $result['id'] == $_POST['edit_com']) {
+            ?>
+                    <form class="form_text" method='POST'>
+                        <input type="hidden" name="id_comment" value="<?= $result['id']; ?>"/>
+                        <textarea class="text_com" name="edit_commentary" id="edit_commentary" cols="30" rows="10"></textarea>
+                        <button class="btn btn-primary" type="submit">Modifier</button>
+                    </form>
+            <?php
+                  
+                } else {
+            ?>
+                    <p class="content_comentary"><?= $result['comment']; ?></p>
+            <?php
+                }
+                if(!empty($_POST['edit_commentary'])) {
+                    Articles::updateComment($_POST['edit_commentary'], $_POST['id_comment']);
+                    header('location: ./?page=article&id=' . $result['id_articles']);
+                    exit();
+                }
+            ?>
+            
         </div>
         <?php
     }

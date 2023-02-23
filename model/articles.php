@@ -13,7 +13,15 @@
             $requete->execute([$pseudo, $comment, $idArticles]);
         }
 
-        public static function deleteComment() {
-            
+        public static function deleteComment($id) {
+            require('connection.php');
+            $requete = $bdd->prepare('DELETE FROM Comment WHERE id = ?');
+            $requete->execute([$id]);
+        }
+
+        public static function updateComment($comment, $id) {
+            require('connection.php');
+            $requete = $bdd->prepare('UPDATE Comment SET comment = ? WHERE id = ?');
+            $requete->execute([$comment, $id]);
         }
     }

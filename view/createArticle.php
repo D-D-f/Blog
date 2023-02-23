@@ -1,9 +1,11 @@
 <?php
     require_once('./model/admin.php');
+    $title = "Créer un article";
+    ob_start(); 
+
 
     if(isset($_SESSION['connect'])) {
-        if(Admin::admin($_SESSION['pseudo'])) {
-    ?>
+        if(Admin::admin($_SESSION['pseudo'])) { ?>
         <form method="POST">
             <h2>Créer article</h2>
             <p>
@@ -22,4 +24,6 @@
             return false;
         }
     }
-?>
+
+    $content = ob_get_clean();
+    require('view/template.php');
