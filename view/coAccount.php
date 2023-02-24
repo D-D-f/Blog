@@ -43,7 +43,7 @@
         ?>
 
         <div class="d-grid gap-2 col-6 mx-auto mt-5">
-            <button class="btn btn-dark" type="submit">Connexion</button>
+            <button class="btn btn-primary" type="submit">Connexion</button>
         </div>
     </form>
 </div>

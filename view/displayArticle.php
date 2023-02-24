@@ -25,9 +25,10 @@
         header('location: ./?page=article&id='. $_GET['id']);
         exit();
     }
-
     
 ?>
+
+<div class="d-flex flex-column justify-content-between h-100">
     <div class="img">
     </div>
 
@@ -38,42 +39,41 @@
     while($result = $requete->fetch()) {
         $date = Articles::transformDate($result['date']);
 ?>
-    <div class="d-flex justify-content-between">
-        <div class="">
+    <div class="d-flex flex-column justify-content-between h-100">
+        <div class="container">
             <h2><?= $result['title']; ?></h2>
             <span><i><?= $date ?></i></span>
         </div>
         <?php if(Admin::admin($_SESSION['pseudo'])) { ?>
-        <div class="d-flex">
+        <div class="container d-flex">
             <form method="POST">
                 <input type="hidden" name="article_id" value="<?= $result['id']; ?>"/>
-                <button type="submit">
+                <button class="btn btn-primary" type="submit">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </form>
             <form method="POST">
                 <input type="hidden" name="articles_id" value="<?= $result['id']; ?>"/>
-                <button type="submit">
+                <button class="btn btn-primary" type="submit">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </form>
         </div>
-    </div>
     <section>
         <?php 
             if(!empty($_POST['article_id'])) {?>
-                <form class="d-flex flex-column p-5" method="POST">
+                <form class="d-flex flex-column p-5 border border-primary" method="POST">
                     <textarea name="updateArticle" id="updateArticle" cols="30" rows="10"><?= $result['texte'] ?></textarea>
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
             <?php }?>
-             <?php 
+<?php }?>
 
-            
-    }?>
+    <div class="container article-text">
         <?= $result['texte'] ?>
+    </div>
     </section>
-    <h2>Commentaires:</h2>
+    <h2 class="container">Commentaires:</h2>
 <?php
     }
     $commentary = $bdd->prepare('SELECT id, pseudo, comment, id_articles, date FROM Comment WHERE id_articles = ?');
@@ -86,22 +86,21 @@
                     <img src="public/assets/img/user.jpg" alt="logo user">
                     <h4 class="pseudo_commentary"><?= $result['pseudo']; ?></h4>                    
                 </div>
-                <?php if(!empty($_SESSION['connect']) && $_SESSION['pseudo'] == $result['pseudo']) { ?>
+        <?php if(!empty($_SESSION['connect']) && $_SESSION['pseudo'] == $result['pseudo']) { ?>
                 <div class="com d-flex justify-content-evenly">
                     <form method="POST">
                         <input type="hidden" name="edit_com" value="<?= $result['id']; ?>"/>
-                        <button type="submit">
+                        <button class="btn btn-primary" type="submit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </form>
                     
                     <form method="POST">
                         <input type="hidden" name="comment_id" value="<?= $result['id']; ?>"/>
-                        <button type="submit">
+                        <button class="btn btn-primary" type="submit">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
-                
                 </div>
                 <?php
                 }
@@ -122,19 +121,19 @@
                     <p class="content_comentary"><?= $result['comment']; ?></p>
             <?php
                 }
-                
             ?>
         </div>
         <?php
     }
-
+ 
     if(!empty($_SESSION['connect'])) {
 ?>
-<form class="container form_text" method='POST'>
-    <textarea class="text_com" name="commentary" id="commentary" cols="30" rows="10"></textarea>
-    <button class="btn btn-primary" type="submit">Envoyer</button>
-</form>
+    <form class="container form_text" method='POST'>
+        <textarea class="text_com" name="commentary" id="commentary" cols="30" rows="10"></textarea>
+        <button class="btn btn-primary" type="submit">Envoyer</button>
+    </form>
 
+   </div>
 <?php
     }
     $content = ob_get_clean();

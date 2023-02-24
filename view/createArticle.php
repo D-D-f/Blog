@@ -6,7 +6,7 @@
 
     if(isset($_SESSION['connect'])) {
         if(Admin::admin($_SESSION['pseudo'])) { ?>
-        <form method="POST">
+        <form class="container w-100 d-flex flex-column justify-content-center align-items-center" method="POST">
             <h2>Créer article</h2>
             <p>
                 <input type="text" name="title" id="title" placeholder="Titre de l'article">
@@ -14,10 +14,8 @@
             <p>
                 <input type="text" name="resum" id="resum" placeholder="Mini résumé de l'article">
             </p>
- 
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-         
-            <button class="btn btn-primary" type="submit">Ajouter l'article</button>
+            <textarea class="w-50" name="content" id="content" cols="30" rows="10"></textarea>
+            <button class="container w-50 btn btn-primary mt-5" type="submit">Ajouter l'article</button>
         </form>
     <?php
             if(isset($_POST['content']) && isset($_POST['title']) && isset($_POST['resum'])) {

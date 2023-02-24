@@ -74,7 +74,7 @@
             }  
         ?>
         <div class="d-grid gap-2 col-6 mx-auto mt-5">
-            <button class="btn btn-dark" type="submit">S'inscrire</button>
+            <button class="btn btn-primary" type="submit">S'inscrire</button>
         </div>
     </form>
 </div>

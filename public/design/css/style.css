@@ -11633,14 +11633,20 @@ form {
 
 form p {
   width: 50%;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #ffffff;
   border-radius: 9px;
 }
 
 form p input {
+  background-color: #2f3542;
+  color: #ffffff;
   width: 80%;
   padding: 15px;
   border: none;
+}
+
+input::placeholder {
+  color: #ffffff;
 }
 
 input:focus {
@@ -11683,6 +11689,11 @@ header a {
 .text_presentation {
   margin-left: 10px;
   text-align: justify;
+}
+
+.createArticle {
+  text-decoration: none;
+  color: #2f3542;
 }
 
 .img {

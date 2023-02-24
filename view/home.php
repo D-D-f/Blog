@@ -9,7 +9,7 @@
     </aside>
     <section class="container d-flex flex-column justify-content-between sect">
         <h2>Tous les articles</h2>
-        <div class="d-flex justify-content-around align-items-center flex-wrap">
+        <div class="d-flex justify-content-between">
             <?php require('view/displayCardArticle.php'); ?>
         </div>
     </section>

@@ -43,13 +43,13 @@
                                     if($_SESSION['connect'] == 1) {
                                         if(Admin::admin($_SESSION['pseudo'])) { ?>
                                                 <li class="nav-item">
-                                                    <a href="./?page=createarticle">Créer un article</a>
+                                                    <a class="createArticle" href="./?page=createarticle">Créer un article</a>
                                                 </li>
                                         <?php 
                                         
                                     }?>
                                     <form class="form_deco" action="./index.php" method="POST">
-                                        <input type="submit" name="signoff" id="signoff" value="Déconnexion">
+                                        <input class="btn btn-success" type="submit" name="signoff" id="signoff" value="Déconnexion">
                                     </form>
                                 <?php } ?>
                             </ul>

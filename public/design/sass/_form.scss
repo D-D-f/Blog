@@ -4,13 +4,19 @@ form {
 }
 form p {
   width: 50%;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $light;
   border-radius: 9px;
 }
 form p input {
+  background-color: $dark;
+  color: $light;
   width: 80%;
   padding: 15px;
   border: none;
+}
+
+input::placeholder {
+  color: $light;
 }
 
 input:focus {
