@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="public/design/css/style.css">
     <title><?= $title ?></title>
 </head>
-<body>
+<body class="d-flex flex-column justify-content-between bg-dark text-light">
         <nav class="navbar bg-body-tertiary d-flex justify-content-center align-items-center">
         <div class="container-fluid bg-primary">
             <h1>
@@ -76,9 +76,9 @@
             </div>
         </div>
     </nav>
-        <div class="container container_home d-flex flex-column justify-content-around">
-            <?= $content ?>
-        </div>
+
+    <?= $content ?>
+   
     <footer class="bg-primary text-dark p-4">
         <span>© Blog David de Freitas 2023</span>
     </footer>

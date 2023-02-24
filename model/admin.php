@@ -14,9 +14,9 @@
             }
         }
 
-        public static function addArticle($title, $text) {
+        public static function addArticle($title, $text, $resum) {
             require('connection.php');
-            $requete = $bdd->prepare('INSERT INTO Articles(title, texte) VALUES(?, ?)');
-            $requete->execute([$title, $text]);
+            $requete = $bdd->prepare('INSERT INTO Articles(title, texte, resum) VALUES(?, ?, ?)');
+            $requete->execute([$title, $text, $resum]);
         }
     }

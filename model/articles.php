@@ -24,4 +24,22 @@
             $requete = $bdd->prepare('UPDATE Comment SET comment = ? WHERE id = ?');
             $requete->execute([$comment, $id]);
         }
+
+        public static function deleteArticles($id) {
+            require('connection.php');
+            $requete = $bdd->prepare('DELETE FROM Articles WHERE id = ?');
+            $requete->execute([$id]);
+        }
+
+        public static function updateArticles($texte, $id) {
+            require('connection.php');
+            $requete = $bdd->prepare('UPDATE Articles SET texte = ? WHERE id = ?');
+            $requete->execute([$texte, $id]);
+        }
+
+        public static function deleteAllCommentArticles($id) {
+            require('connection.php');
+            $requete = $bdd->prepare('DELETE FROM Comment WHERE id_articles = ?');
+            $requete->execute([$id]);
+        }
     }

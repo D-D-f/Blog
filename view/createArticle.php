@@ -9,16 +9,21 @@
         <form method="POST">
             <h2>Créer article</h2>
             <p>
-                <input type="text" name="title" id="title">
+                <input type="text" name="title" id="title" placeholder="Titre de l'article">
             </p>
             <p>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                <input type="text" name="resum" id="resum" placeholder="Mini résumé de l'article">
             </p>
-            <button type="submit">Ajouter l'article</button>
+ 
+                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+         
+            <button class="btn btn-primary" type="submit">Ajouter l'article</button>
         </form>
     <?php
-            if(isset($_POST['content']) && isset($_POST['title'])) {
-                Admin::addArticle($_POST['title'], $_POST['content']);
+            if(isset($_POST['content']) && isset($_POST['title']) && isset($_POST['resum'])) {
+                Admin::addArticle($_POST['title'], $_POST['content'], $_POST['resum']);
+                header('location: index.php');
+                exit();
             }
         } else {
             return false;
